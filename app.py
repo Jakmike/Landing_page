@@ -7,30 +7,6 @@ r = requests.get('https://www.python.org')
 
 app = Flask(__name__)
 
-# Array of quotes
-quotes = (
-    "The only way to do great work is to love what you do.",
-    "Innovation distinguishes between a leader and a follower.",
-    "Life is 10% what happens to us and 90% how we react to it.",
-    "Don't be pushed around by the fears in your mind. Be led by the dreams in your heart.",
-    "Instead of worrying about what you cannot control, shift your energy to what you can create.",
-    "I have no special talents. I am only passionately curious.",
-    "Be the reason someone smiles. Be the reason someone feels loved and believes in the goodness in people.",
-    "Accept yourself, love yourself, and keep moving forward. If you want to fly, you have to give up what weighs you down.",
-    "Believe in yourself. You are braver than you think, more talented than you know, and capable of more than you imagine.",
-    "You cannot control the behavior of others, but you can always choose how you respond to it.",
-    "Success is not how high you have climbed, but how you make a positive difference to the world.",
-    "Pursue what catches your heart, not what catches your eyes.",
-    "Make improvements, not excuses. Seek respect, not attention.",
-    "Start each day with a positive thought and a grateful heart.",
-    "Life is about accepting the challenges along the way, choosing to keep moving forward, and savoring the journey.",
-    "Never lose hope. Storms make people stronger and never last forever.",
-    "Do not fear failure but rather fear not trying.",
-    "Do not let the memories of your past limit the potential of your future. There are no limits to what you can achieve on your journey through life, except in your mind.",
-    "Stop comparing yourself to other people, just choose to be happy and live your own life.",
-    "When you arise in the morning think of what a privilege it is to be alive, to think, to enjoy, to love.",
-    "I close my eyes in order to see."
-)
 
 # Route to render the index.html template
 @app.route('/')
@@ -39,10 +15,9 @@ def rootpage():
 
 
 # Route to generate a random quote
-@app.route("/random-quote", methods=['GET', 'POST'])
+@app.route('/random-quote', methods=['GET'])
 def random_quote():
-    quote = random.choice(quotes)
-    return jsonify(quote)
+    return render_template("quote.html")
 
 # Route to generate quote of the day via search icon
 @app.route('/search', methods=['POST'])
